@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APP de Gestão Ativa de Portfólio</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">APP de Gestão Ativa de Portfólio</h1>
+        <form action="/submit" method="POST" class="mb-5">
+            <div class="form-group">
+                <label for="projectName">Nome do Projeto:</label>
+                <input type="text" id="projectName" name="projectName" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="dimensionMarket">Mercado:</label>
+                <input type="number" id="dimensionMarket" name="dimensionMarket" class="form-control" min="0" max="5"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="dimensionCompetition">Concorrência:</label>
+                <input type="number" id="dimensionCompetition" name="dimensionCompetition" class="form-control" min="0"
+                    max="5" required>
+            </div>
+            <div class="form-group">
+                <label for="dimensionFinance">Financeiro:</label>
+                <input type="number" id="dimensionFinance" name="dimensionFinance" class="form-control" min="0" max="5"
+                    required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+        </form>
+
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card text-white bg-primary mb-3">
+                    <div class="card-header">Nota Média Geral</div>
+                    <div class="card-body">
+                        <h5 class="card-title" id="averageScore">0</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <label for="projectFilter">Filtrar por Projetos:</label>
+                <select id="projectFilter" class="form-control" multiple>
+                    <option value="">Todos os Projetos</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <canvas id="averageCategoryChart"></canvas>
+            </div>
+            <div class="col-md-6">
+                <canvas id="radarChart"></canvas>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <canvas id="bcgMatrixChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
