@@ -13,24 +13,83 @@
     <div class="container">
         <h1 class="text-center my-4">APP de Gestão Ativa de Portfólio</h1>
         <form action="/submit" method="POST" class="mb-5">
-            <div class="form-group">
-                <label for="projectName">Nome do Projeto:</label>
-                <input type="text" id="projectName" name="projectName" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="dimensionMarket">Mercado:</label>
-                <input type="number" id="dimensionMarket" name="dimensionMarket" class="form-control" min="0" max="5"
-                    required>
-            </div>
-            <div class="form-group">
-                <label for="dimensionCompetition">Concorrência:</label>
-                <input type="number" id="dimensionCompetition" name="dimensionCompetition" class="form-control" min="0"
-                    max="5" required>
-            </div>
-            <div class="form-group">
-                <label for="dimensionFinance">Financeiro:</label>
-                <input type="number" id="dimensionFinance" name="dimensionFinance" class="form-control" min="0" max="5"
-                    required>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="projectName">Nome do Projeto:</label>
+                        <input type="text" id="projectName" name="projectName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dimensionMarket">Mercado: <span data-toggle="tooltip"
+                                title="Avalia o tamanho e potencial do mercado.">&#9432;</span></label>
+                        <input type="number" id="dimensionMarket" name="dimensionMarket" class="form-control" min="0"
+                            max="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dimensionCompetition">Concorrência: <span data-toggle="tooltip"
+                                title="Analisa a competição no mercado.">&#9432;</span></label>
+                        <input type="number" id="dimensionCompetition" name="dimensionCompetition" class="form-control"
+                            min="0" max="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dimensionFinance">Financeiro: <span data-toggle="tooltip"
+                                title="Considera os aspectos financeiros do projeto.">&#9432;</span></label>
+                        <input type="number" id="dimensionFinance" name="dimensionFinance" class="form-control" min="0"
+                            max="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dimensionTrend">Tendência: <span data-toggle="tooltip"
+                                title="Avalia as tendências de mercado.">&#9432;</span></label>
+                        <input type="number" id="dimensionTrend" name="dimensionTrend" class="form-control" min="0"
+                            max="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dimensionLifecycle">Lifecycle: <span data-toggle="tooltip"
+                                title="Considera o ciclo de vida do produto ou serviço.">&#9432;</span></label>
+                        <input type="number" id="dimensionLifecycle" name="dimensionLifecycle" class="form-control"
+                            min="0" max="5" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="category">Categoria:</label>
+                        <select id="category" name="category" class="form-control" required>
+                            <option value="Geoint">Geoint</option>
+                            <option value="Data Science">Data Science</option>
+                            <option value="Cybersec">Cybersec</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dimensionCapabilities">Capacidades: <span data-toggle="tooltip"
+                                title="Analisa as capacidades internas para executar o projeto.">&#9432;</span></label>
+                        <input type="number" id="dimensionCapabilities" name="dimensionCapabilities"
+                            class="form-control" min="0" max="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dimensionPortfolio">Portfólio: <span data-toggle="tooltip"
+                                title="Considera como o projeto se encaixa no portfólio atual.">&#9432;</span></label>
+                        <input type="number" id="dimensionPortfolio" name="dimensionPortfolio" class="form-control"
+                            min="0" max="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dimensionDemand">Demanda: <span data-toggle="tooltip"
+                                title="Avalia a demanda do mercado pelo produto ou serviço.">&#9432;</span></label>
+                        <input type="number" id="dimensionDemand" name="dimensionDemand" class="form-control" min="0"
+                            max="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dimensionPartnerships">Parcerias: <span data-toggle="tooltip"
+                                title="Considera as parcerias estratégicas.">&#9432;</span></label>
+                        <input type="number" id="dimensionPartnerships" name="dimensionPartnerships"
+                            class="form-control" min="0" max="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dimensionSales">Vendas: <span data-toggle="tooltip"
+                                title="Analisa o potencial de vendas do projeto.">&#9432;</span></label>
+                        <input type="number" id="dimensionSales" name="dimensionSales" class="form-control" min="0"
+                            max="5" required>
+                    </div>
+                </div>
             </div>
             <button type="submit" class="btn btn-primary btn-block">Enviar</button>
         </form>
@@ -68,6 +127,14 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>

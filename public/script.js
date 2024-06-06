@@ -2,13 +2,20 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('/data')
         .then(response => response.json())
         .then(data => {
-            const labels = ['Mercado', 'Concorrência', 'Financeiro'];
+            const labels = ['Mercado', 'Concorrência', 'Financeiro', 'Tendência', 'Lifecycle', 'Capacidades', 'Portfólio', 'Demanda', 'Parcerias', 'Vendas'];
             const datasets = data.map(item => ({
                 label: item.projectName,
                 data: [
                     parseInt(item.dimensionMarket),
                     parseInt(item.dimensionCompetition),
-                    parseInt(item.dimensionFinance)
+                    parseInt(item.dimensionFinance),
+                    parseInt(item.dimensionTrend),
+                    parseInt(item.dimensionLifecycle),
+                    parseInt(item.dimensionCapabilities),
+                    parseInt(item.dimensionPortfolio),
+                    parseInt(item.dimensionDemand),
+                    parseInt(item.dimensionPartnerships),
+                    parseInt(item.dimensionSales)
                 ],
                 borderColor: getRandomColor(),
                 backgroundColor: getRandomColor(0.2)
@@ -52,8 +59,30 @@ document.addEventListener('DOMContentLoaded', () => {
                     datasets: [{
                         label: 'Nota Média por Categoria',
                         data: averageCategoryData,
-                        backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)'],
-                        borderColor: ['rgba(75, 192, 192, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(201, 203, 207, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(201, 203, 207, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)'
+                        ],
                         borderWidth: 1
                     }]
                 },
@@ -114,7 +143,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     data: [
                         parseInt(item.dimensionMarket),
                         parseInt(item.dimensionCompetition),
-                        parseInt(item.dimensionFinance)
+                        parseInt(item.dimensionFinance),
+                        parseInt(item.dimensionTrend),
+                        parseInt(item.dimensionLifecycle),
+                        parseInt(item.dimensionCapabilities),
+                        parseInt(item.dimensionPortfolio),
+                        parseInt(item.dimensionDemand),
+                        parseInt(item.dimensionPartnerships),
+                        parseInt(item.dimensionSales)
                     ],
                     borderColor: getRandomColor(),
                     backgroundColor: getRandomColor(0.2)
@@ -139,9 +175,12 @@ document.addEventListener('DOMContentLoaded', () => {
 // Função para calcular a nota média geral
 function calculateAverageScore(data) {
     const totalScores = data.reduce((acc, item) => {
-        return acc + parseInt(item.dimensionMarket) + parseInt(item.dimensionCompetition) + parseInt(item.dimensionFinance);
+        return acc + parseInt(item.dimensionMarket) + parseInt(item.dimensionCompetition) + parseInt(item.dimensionFinance)
+            + parseInt(item.dimensionTrend) + parseInt(item.dimensionLifecycle) + parseInt(item.dimensionCapabilities)
+            + parseInt(item.dimensionPortfolio) + parseInt(item.dimensionDemand) + parseInt(item.dimensionPartnerships)
+            + parseInt(item.dimensionSales);
     }, 0);
-    const numberOfScores = data.length * 3;
+    const numberOfScores = data.length * 10;
     return totalScores / numberOfScores;
 }
 
@@ -150,10 +189,24 @@ function calculateAverageCategoryData(data) {
     const totalMarket = data.reduce((acc, item) => acc + parseInt(item.dimensionMarket), 0);
     const totalCompetition = data.reduce((acc, item) => acc + parseInt(item.dimensionCompetition), 0);
     const totalFinance = data.reduce((acc, item) => acc + parseInt(item.dimensionFinance), 0);
+    const totalTrend = data.reduce((acc, item) => acc + parseInt(item.dimensionTrend), 0);
+    const totalLifecycle = data.reduce((acc, item) => acc + parseInt(item.dimensionLifecycle), 0);
+    const totalCapabilities = data.reduce((acc, item) => acc + parseInt(item.dimensionCapabilities), 0);
+    const totalPortfolio = data.reduce((acc, item) => acc + parseInt(item.dimensionPortfolio), 0);
+    const totalDemand = data.reduce((acc, item) => acc + parseInt(item.dimensionDemand), 0);
+    const totalPartnerships = data.reduce((acc, item) => acc + parseInt(item.dimensionPartnerships), 0);
+    const totalSales = data.reduce((acc, item) => acc + parseInt(item.dimensionSales), 0);
     return [
         totalMarket / data.length,
         totalCompetition / data.length,
-        totalFinance / data.length
+        totalFinance / data.length,
+        totalTrend / data.length,
+        totalLifecycle / data.length,
+        totalCapabilities / data.length,
+        totalPortfolio / data.length,
+        totalDemand / data.length,
+        totalPartnerships / data.length,
+        totalSales / data.length
     ];
 }
 
